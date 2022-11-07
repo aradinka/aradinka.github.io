@@ -17,3 +17,5 @@ In the above diagram, the blue dots we see are the distribution of `y` with resp
 
 Read more:
 - [What is ordinary least square model?](ordinary-least-square-model.md)
+
+> Source: [iNeuronai](https://github.com/iNeuronai/interview-question-data-science-)
