@@ -7,4 +7,4 @@ This website meant to be my digital garden built using [Quartz](https://github.c
 
 Check out my personal portfolio [aradinka.vercel.app](https://aradinka.vercel.app/)
 
-[[test-notes]]
+[test-notes](test-notes.md)
