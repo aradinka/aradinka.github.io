@@ -2,7 +2,7 @@
 title: "What is linear regression?"
 tags:
 - what-is
-- area-ds-interview
+- areas-ds-interview
 ---
 
 ## Linear Regressions
