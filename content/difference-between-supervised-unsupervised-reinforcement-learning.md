@@ -1,6 +1,7 @@
 ---
 title: "What is the difference between supervised, unsupervised, and reinforcement learning?"
 tags:
+- all-post
 - what-is
 - areas-ds-interview
 ---

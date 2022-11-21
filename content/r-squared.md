@@ -1,6 +1,7 @@
 ---
 title: "What is R squared?"
 tags:
+- all-post
 - what-is
 - areas-ds-interview
 ---

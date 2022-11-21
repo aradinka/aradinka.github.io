@@ -1,6 +1,7 @@
 ---
 title: "What is linear regression?"
 tags:
+- all-post
 - what-is
 - areas-ds-interview
 ---

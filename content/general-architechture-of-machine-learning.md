@@ -1,6 +1,7 @@
 ---
 title: "General Architechture of Machine Learning"
 tags:
+- all-post
 - areas-ds-interview
 ---
 

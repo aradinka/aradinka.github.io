@@ -1,6 +1,7 @@
 ---
 title: "What is support vector regression?"
 tags:
+- all-post
 - what-is
 - areas-ds-interview
 ---

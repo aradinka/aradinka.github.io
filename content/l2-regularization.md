@@ -1,6 +1,7 @@
 ---
 title: "What is l2 regularization?"
 tags:
+- all-post
 - what-is
 - areas-ds-interview
 ---

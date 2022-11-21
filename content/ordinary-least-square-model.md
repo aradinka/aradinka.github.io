@@ -1,6 +1,7 @@
 ---
 title: "What is ordinary least square model?"
 tags:
+- all-post
 - what-is
 - areas-ds-interview
 ---

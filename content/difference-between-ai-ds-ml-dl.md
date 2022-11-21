@@ -1,6 +1,7 @@
 ---
 title: "What is the difference between AI, DS, ML and DL?"
 tags:
+- all-post
 - what-is
 - areas-ds-interview
 ---

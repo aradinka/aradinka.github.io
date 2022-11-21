@@ -1,5 +1,6 @@
 ---
 title: "Tags System"
+- all-post
 ---
 
 # PARA Methods

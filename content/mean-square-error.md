@@ -1,6 +1,7 @@
 ---
 title: "What is mean square error?"
 tags:
+- all-post
 - what-is
 - areas-ds-interview
 ---
