@@ -45,7 +45,7 @@ Regardless of the machine learning algorithms, one would not be able to learn an
 
 ## Data-Centric Workflow
 
-![](https://assets.leetcode.com/uploads/2018/11/25/ml_workflow.png)
+![](https://assets.leetcode.com/uploads/2018/11/25/ml_workflow.pngthe outermost interface that we interact with the model)
 
 # Reference
 

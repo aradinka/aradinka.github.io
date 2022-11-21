@@ -1,5 +1,6 @@
 ---
 title: "Tags System"
+tags:
 - all-post
 ---
 
