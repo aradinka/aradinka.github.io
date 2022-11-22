@@ -5,7 +5,7 @@ tags:
 - algorithm
 ---
 
-# What is decision tree?
+## What is decision tree?
 
 > A decision tree is a tree-shaped model guiding us in **which order to check the features of an object**, to **output its discrete or continuous label**.
 
@@ -21,7 +21,7 @@ Assumptions while creating a decision tree:
 3. Records are distributed recursively on the basis of attribute values
 4. Which attributes are considered to be in root node or internal node is done by using a statistical approach
 
-![](decision-tree-1.png)
+![](images/decision-tree-1.png)
 
 ---
 
@@ -35,13 +35,13 @@ Assumptions while creating a decision tree:
 - When predicting the outcome for a new object, we assign it the combined label of the training data that end in the same leaf as the instance. In the classification problems, it’s the associated subset’s majority class. Similarly, it’s the average value in regression
 
 
-# Use Cases
+## Use Cases
 
 - [[customer-churn-prediction]]
 - [[credit-score-modelling]]
 - [[disease-prediction]]
 
-# Advantages & Disadvantages
+## Advantages & Disadvantages
 
 Advantages:
 - explainable and interpretable
@@ -51,7 +51,7 @@ Disadvantages:
 - Prone to [[overfitting]]
 - Sensitive to [[outlier]]
 
-## Overfitting and Instability of Decision Trees
+### Overfitting and Instability of Decision Trees
 
 
 Overfitting:
@@ -62,13 +62,17 @@ Instability:
 - We can limit the tree’s depth beforehand, but there’s still the problem of instability
 - even **small changes to the training data**, such as excluding a few instances, **can result in a completely different tree**
 
-# Algorithm
+## Splitting the Data
+
+> When splitting, we choose to partition the data by the attribute that results in the **smallest impurity** of the new nodes
+
+## Algorithm
 
 > A decision tree uses different algorithms to decide whether to split a node into two or more sub-nodes. **The algorithm chooses the partition maximizing the purity of the split (i.e., minimizing the [[impurity]])**
 
 impurity is a measure of **homogeneity** of the labels at the node at hand
 
-## ID3 (Iterative Dichotomiser)
+### ID3 (Iterative Dichotomiser)
 
 - Uses [[entropy]] and [[information-gain]] as metrics to form a better decision tree
 - The attribute with the highest information gain is used as a root node, and a similar approach is followed after that 
@@ -81,6 +85,6 @@ impurity is a measure of **homogeneity** of the labels at the node at hand
 ![](entropy-1.png)
 
 
-# Reference
+## Reference
 
 - https://www.baeldung.com/cs/decision-trees-vs-random-forests
