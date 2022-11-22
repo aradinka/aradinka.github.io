@@ -7,6 +7,8 @@ tags:
 
 # What is decision tree?
 
+> A decision tree is a tree-shaped model guiding us in **which order to check the features of an object**, to **output its discrete or continuous label**.
+
 > a type of supervised learning algorithm that **can be used in classification as well as regressor problems**
 
 > works on an if-then statement, tries to solve a problem by using tree representation (node and leaf)
@@ -20,6 +22,18 @@ Assumptions while creating a decision tree:
 4. Which attributes are considered to be in root node or internal node is done by using a statistical approach
 
 ![](decision-tree-1.png)
+
+---
+
+> The internal nodes tell us which features to check, and the leaves reveal the tree’s prediction
+
+
+![](https://www.baeldung.com/wp-content/uploads/sites/4/2022/03/decision_tree1.jpg)
+
+- Each leaf contains a subset of the training dataset
+- All its instances pass all the checks on the path from the root to the leaf
+- When predicting the outcome for a new object, we assign it the combined label of the training data that end in the same leaf as the instance. In the classification problems, it’s the associated subset’s majority class. Similarly, it’s the average value in regression
+
 
 # Use Cases
 
@@ -37,6 +51,16 @@ Disadvantages:
 - Prone to [[overfitting]]
 - Sensitive to [[outlier]]
 
+## Overfitting and Instability of Decision Trees
+
+
+Overfitting:
+- Decision trees prone to [[overfitting]] the data. Since **accuracy improves with each internal node**, **training will tend to grow a tree to its maximum** to improve the performance metrics.
+- That deteriorates the tree’s generalization capability and usefulness on unseen data since it will start modeling the noise
+
+Instability:
+- We can limit the tree’s depth beforehand, but there’s still the problem of instability
+- even **small changes to the training data**, such as excluding a few instances, **can result in a completely different tree**
 
 # Algorithm
 
@@ -55,3 +79,8 @@ impurity is a measure of **homogeneity** of the labels at the node at hand
 - the higher the entropy, the higher potential to improve the classification here
 
 ![](entropy-1.png)
+
+
+# Reference
+
+- https://www.baeldung.com/cs/decision-trees-vs-random-forests
