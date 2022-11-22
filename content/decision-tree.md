@@ -62,9 +62,25 @@ Instability:
 - We can limit the tree’s depth beforehand, but there’s still the problem of instability
 - even **small changes to the training data**, such as excluding a few instances, **can result in a completely different tree**
 
+## Depth of the tree
+
+When we divide the houses amongst many leaves, we also have fewer houses in each leaf. Leaves with very few houses will make predictions that are quite close to those homes' actual values, but they may make very unreliable predictions for new data (because each prediction is based on only a few houses).
+
+On the flip side, if we make our tree very shallow, it doesn't divide up the houses into very distinct groups. 
+
+At an extreme, if a tree divides houses into only 2 or 4, each group still has a wide variety of houses. Resulting predictions may be far off for most houses, even in the training data (and it will be bad in validation too for the same reason)
+
+ A deep tree with lots of leaves will overfit because each prediction is coming from historical data from only the few houses at its leaf. But a shallow tree with few leaves will perform poorly because it fails to capture as many distinctions in the raw data.
+
+
 ## Splitting the Data
 
 > When splitting, we choose to partition the data by the attribute that results in the **smallest impurity** of the new nodes
+
+
+## Control overfitting in decision tree
+
+_max_leaf_nodes_ argument provides a very sensible way to control overfitting vs underfitting. The more leaves we allow the model to make, the more we move from the underfitting area to the overfitting area.
 
 ## Algorithm
 

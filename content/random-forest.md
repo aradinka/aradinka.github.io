@@ -17,6 +17,8 @@ enableToc: false
 
 The rationale is that **an ensemble of models is likely more accurate than a single tree**. So, even if a tree overfits its subset, we expect other trees in the forest to compensate for it. That’s why we use different subsets for each tree, to force them to approach the problem from different angles.
 
+The random forest uses many trees, and it makes a prediction by averaging the predictions of each component tree.
+
 ## Disadvantages
 
 - Training complexity can be high
@@ -28,3 +30,4 @@ Humans can visualize and understand a tree, no matter if they’re machine learn
 
 # Reference
 - https://www.baeldung.com/cs/decision-trees-vs-random-forests
+- https://www.kaggle.com/code/dansbecker/random-forests/tutorial

@@ -6,6 +6,8 @@ tags:
 
 > An underfitting model is the one that does not fit well with the training data, _i.e._ significantly deviated from the ground truth
 
+> Underfitting **failing to capture relevant patterns**, again leading to less accurate predictions
+
 Causes:
 - the model is over-simplified for the data, therefore it is not capable to capture the hidden relationship within the data
 
