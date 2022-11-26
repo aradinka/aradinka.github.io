@@ -6,7 +6,7 @@ enableToc: false
 ---
 
 Technical coding test
-- SQL
+- SQL -> [[code-sql]]
 - Python
 
 Past project detail
@@ -22,6 +22,10 @@ Past project detail
 General AI ML question
 
 General stats question
+- statistical significance
+- [[hypothesis-testing]] testing
+	- 2 types of error, the consequence, which one is better for what case
+- pvalue
 - distribution
 - t-test
 
