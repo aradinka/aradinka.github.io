@@ -65,7 +65,9 @@ When we run our experiment for one month, we noticed that the mean [[conversion-
 
 For rejecting out null hypothesis we have to prove the **statistical significance** of our test.
 
+An experiment is considered to be statistically significant when we have enough evidence to prove that the result we see in the sample **also exist in population**.
 
+To prove the statistical significance of the experiment, we can use two sample [[t-test]].
 
 ## Code
 

@@ -5,11 +5,11 @@ tags:
 enableToc: false
 ---
 
-Technical coding test
+##  Technical coding test
 - SQL -> [[code-sql]]
 - Python
 
-Past project detail
+## Past project detail
 - speaker diarization
 - madani
 - knowledge
@@ -19,9 +19,10 @@ Past project detail
 	- survival analysis
 	- data viz
 
-General AI ML question
+## General AI ML question
+- confussion matrix
 
-General stats question
+## General stats question
 - statistical significance
 - [[hypothesis-testing]] testing
 	- 2 types of error, the consequence, which one is better for what case
@@ -29,7 +30,8 @@ General stats question
 - distribution
 - t-test
 
-General ML Algorithm
+
+## General ML Algorithm
 - regression
 	- linear
 	- lasso
@@ -41,11 +43,13 @@ General ML Algorithm
 	- clustering
 	- association
 
-Personal goals
+## General Question
 - me in the next 5 years
 - kelebihan kekurangan
+- source
+	- https://www.linkedin.com/posts/ayutyas-pramodha-4637a416b_bei-ugcPost-7002190411498762240-MAG0?utm_source=share&utm_medium=member_desktop
 
-Deep learning question 
+## Deep learning question 
 - CNN
 - loss function
 - optimizer
