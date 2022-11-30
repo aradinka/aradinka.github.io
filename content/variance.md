@@ -5,3 +5,5 @@ tags:
 ---
 
 > variance is the tendency to learn random things unrelated to the real signal
+
+

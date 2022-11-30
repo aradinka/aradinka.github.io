@@ -13,6 +13,18 @@ enableToc: false
 
 > Who is the most likely customer?
 
+> Who are my best customers?
+
+> Which customer has the potential to buy more?
+
+> Which customer has been churned out / has lapsed?
+
+> Which customer can be converted by creating value through promotions?
+
+> Which customer is likely to be loyal in the near future?
+
+> What brand means the existing customers?
+
 Summary:
 - Built on historical transactions between user and the business
 - Uses R, F, and M variables of customer data
@@ -24,12 +36,20 @@ Summary:
 Goals:
 - Help businesses differentiate between marketing to existing and new customers
 - Helps them create relevant and personalized messaging by understanding user behavior
+- Help businesses magane customer perceptions
 - Segment it's customers based on three criteria, based on an existing customer's transaction history
-- Prevent churn by using fundamental marketing principles of segmentation, targeting, and positioning
-
-Customer segmentation:
+- Prevent churn by using fundamental marketing principles of segmentation, [[targeting]], and [[positioning]]
+- Translate positive sentiment into purchase opportunities
 - Allow us to devide potential customer groups, allowing business to **talk to them separately**
-- 
+
+Pareto principle to RFM:
+-  80% of total results are driven by the top 20% causes
+- In marketing: 80% of your total sales are likely to come from your top 20% of customers
+
+
+Why customer segmentation is highly critical
+- Regular customers will always be high contributors to business monetary value, and hence that customer 
+
 
 All R, F, M criteria can be graded on a scale of 1 to 5. It is also critical to specify an appropriate range for each grade, in order to create a customer group with a similar or a particular behavior
 

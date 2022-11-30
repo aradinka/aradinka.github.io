@@ -5,51 +5,23 @@ tags:
 - algorithm
 ---
 
-## What is decision tree?
+## Summary
 
-> A decision tree is a tree-shaped model guiding us in **which order to check the features of an object**, to **output its discrete or continuous label**.
+It's a tree-shaped supervised learning algorithm, works on if-then statement, that can be used in classification and regression problems. The input can be both continuous and categorical. Feature values are preferred to be categorical, if continuous they are discretized.
 
-> a type of supervised learning algorithm that **can be used in classification as well as regressor problems**
+Advantages:
+- can handle missing values
+- explainable and interpretable
 
-> works on an if-then statement, tries to solve a problem by using tree representation (node and leaf)
+Disadvantages:
+- prone to [[overfitting]]
+- sensitive to [[outlier]]
 
-Input: can be both continuous as well as categorical
-
-Assumptions while creating a decision tree:
-1. Initially all the training set is considered as a root
-2. **Feature values are preferred to be categorical**, if continuous then they are discretized
-3. Records are distributed recursively on the basis of attribute values
-4. Which attributes are considered to be in root node or internal node is done by using a statistical approach
-
-![](images/decision-tree-1.png)
-
----
-
-> The internal nodes tell us which features to check, and the leaves reveal the tree’s prediction
-
-
-![](https://www.baeldung.com/wp-content/uploads/sites/4/2022/03/decision_tree1.jpg)
-
-- Each leaf contains a subset of the training dataset
-- All its instances pass all the checks on the path from the root to the leaf
-- When predicting the outcome for a new object, we assign it the combined label of the training data that end in the same leaf as the instance. In the classification problems, it’s the associated subset’s majority class. Similarly, it’s the average value in regression
-
-
-## Use Cases
-
+Use Cases:
 - [[customer-churn-prediction]]
 - [[credit-score-modelling]]
 - [[disease-prediction]]
 
-## Advantages & Disadvantages
-
-Advantages:
-- explainable and interpretable
-- can handle missing values
-
-Disadvantages:
-- Prone to [[overfitting]]
-- Sensitive to [[outlier]]
 
 ### Overfitting and Instability of Decision Trees
 

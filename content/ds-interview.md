@@ -5,13 +5,26 @@ tags:
 enableToc: false
 ---
 
+## Cover Letter
+
+
+## General Question
+
+- tell me about yourself
+- me in the next 5 years
+- kelebihan
+- kekurangan
+- source
+	- https://www.linkedin.com/posts/ayutyas-pramodha-4637a416b_bei-ugcPost-7002190411498762240-MAG0?utm_source=share&utm_medium=member_desktop
+
+
 ##  Technical coding test
 - SQL -> [[code-sql]]
 - Python
 
 ## Past project detail
-- speaker diarization
-- madani
+- [[project-audio-conversation-transcription]]
+- [[project-madani]]
 - knowledge
 	- clustering
 	- cnn
@@ -19,7 +32,7 @@ enableToc: false
 	- survival analysis
 	- data viz
 
-## General AI ML question
+## General ML question
 - confussion matrix
 
 ## General stats question
@@ -43,11 +56,6 @@ enableToc: false
 	- clustering
 	- association
 
-## General Question
-- me in the next 5 years
-- kelebihan kekurangan
-- source
-	- https://www.linkedin.com/posts/ayutyas-pramodha-4637a416b_bei-ugcPost-7002190411498762240-MAG0?utm_source=share&utm_medium=member_desktop
 
 ## Deep learning question 
 - CNN
