@@ -5,6 +5,8 @@ tags:
 enableToc: false
 ---
 
+SQL is the programming language used with databases
+
 ## Manipulation
 
 ### Create a table with column constraints

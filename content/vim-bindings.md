@@ -25,5 +25,8 @@ enableToc: false
 - quit: :q
 - quit without saving: :q!
 
-
-tsett tset 
+- horizontal vertical split; new, vert
+- move around splits; ctrl+w j, ctrl+w k
+- open another file in normal mode: :e filename
+- create new file in normal mode: :tabnew filename
+- move between tabs: gt, gT
