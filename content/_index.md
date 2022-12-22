@@ -8,3 +8,8 @@ This website meant to be my digital garden built using [Quartz](https://github.c
 Check out my portfolio **[aradinka.com](https://aradinka.com)**
 
 [All Post](/tags/all-post)
+
+Notes:
+- [[ab-testing]]
+- [[code-sql]]
+

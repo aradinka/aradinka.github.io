@@ -8,7 +8,7 @@ enableToc: false
 SQL is the programming language used with databases
 
 
-## Summary
+## Summary 
 
 ```sql
 
