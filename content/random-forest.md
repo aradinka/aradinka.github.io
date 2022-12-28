@@ -13,8 +13,6 @@ enableToc: false
 - Reduces [[overfitting]]
 - Higher accuracy compared to other models
 
-> Random Forests address both [[decision-tree]] issues ([[overfitting]] and instability). The idea is to **construct multiple trees using different subsets of the training data and features** for each tree in the forest. Then, **aggregate** their predictions by outputting the majority vote or the average value
-
 The rationale is that **an ensemble of models is likely more accurate than a single tree**. So, even if a tree overfits its subset, we expect other trees in the forest to compensate for it. That’s why we use different subsets for each tree, to force them to approach the problem from different angles.
 
 The random forest uses many trees, and it makes a prediction by averaging the predictions of each component tree.
