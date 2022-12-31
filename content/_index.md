@@ -11,5 +11,12 @@ Check out my portfolio **[aradinka.com](https://aradinka.com)**
 
 Notes:
 - [[ab-testing]]
+- [[back-propagation]]
 - [[code-sql]]
+- [[code-screen]]
+- [[confusion-matrix]]
+- [[data-engineer-roadmap]]
+- [[decision-tree]]
+- [[rfm-analysis]]
+- [[vim-bindings]]
 
