@@ -19,7 +19,7 @@ Disadvantages:
 
 Use Cases:
 - [[customer-churn-prediction]]
-- [[credit-score-modelling]]
+- [[credit-scoring]]
 - [[disease-prediction]]
 
 

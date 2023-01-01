@@ -13,4 +13,11 @@ tags:
 - [[feature-engineering]]
 	- [[detect-extreme-values]]
 	- [[handling-missing-values]]
+		- take out variable
+		- complete case (buang baris yang memiliki missingg value)
+- [[cross-validation]]
 - [[hyper-parameter-tuning]]
+- modelling
+- evaluasi model
+	- metrics
+		- [[confusion-matrix]]
