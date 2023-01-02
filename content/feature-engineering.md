@@ -12,4 +12,10 @@ example:
 - encode categorical attributes
 
 the outermost interface that we interact with the model
-# Reference
+
+---
+
+
+Read more:
+- [[weight-of-evidence]]
+
