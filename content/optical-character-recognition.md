@@ -276,3 +276,69 @@ Kriteria library:
 - Run extraction py script on android
 - Compress ONNX model 
 - Cobain sample app android dari TensorFlow dan Google. Liat performance nya di image KTP
+
+---
+
+### Notes
+
+Output boxes:
+kiri atas, kanan atas
+kanan bawah, kiri bawah
+
+(lebar, tinggi)
+
+
+Bounding box
+
+```
+{PROVINSi JAWA BARAT=[Point(377, 71), Point(760, 83), Point(758, 119), Point(375, 107)]}
+{KOTA BOGOR=[Point(456, 114), Point(677, 116), Point(676, 143), Point(455, 141)]}
+{NIK=[Point(55, 150), Point(134, 152), Point(133, 179), Point(54, 177)]}
+{32710L0907000013=[Point(253, 156), Point(732, 168), Point(731, 199), Point(252, 187)]}
+```
+
+Center (horizontal, vertikal)
+
+```
+{PROVINSi JAWA BARAT=567,95}
+{KOTA BOGOR=566,128}
+{NIK=94,164}
+{32710L0907000013=492,177}
+{Nama=91,224}
+{AZKA MUHAMMAD RADINKA=496,233}
+{PURBAE=360,258}
+{TempatgtlahirDEPOK, 09-07-2000=311,290}
+{Jenis kelamin=137,312}
+{Alamat=97,341}
+{RT/RW=160,371}
+{Kel/Desa=170,402}
+{Kecamatan KOTA BOGORUTARA=355,436}
+{Agama=91,462}
+{Status Perkawinan: BELUM KAWIN=274,494}
+{Pekerjaan=110,521}
+{Kewarganegaraan: WNI=200,553}
+{Berlaku Hingga=141,580}
+{LAKI-LAK=358,320}
+{PERUMAHAN TAMAN SERUN=505,349}
+{008/004E=359,377}
+{TANAHBARU=402,408}
+{Gol. Darah O=633,324}
+{ISLAM=341,463}
+{PELAJAR/MAHASISWA=456,526}
+{KOTABOGOR=899,510}
+{05-07-201B=900,534}
+{SEUMUR HIDUP=402,585}
+```
+
+
+---
+
+
+### OCR Progress
+
+- [x] Text detection
+- [x] Text recognition
+- [x] Sort box data
+- [x] Remove outliers
+- [x] New similarity distance
+- [ ] Key value extraction
