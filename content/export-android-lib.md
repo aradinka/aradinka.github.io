@@ -99,3 +99,8 @@ defaultConfig {
 //        applicationId "com.miniocr"
 }
 ```
+
+
+res to remove
+
+![[res-to-remove-aar.png]]
