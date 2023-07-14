@@ -6,6 +6,8 @@ tags:
 
 # Five Principles of Prompting
 
+## What is prompt engineering?
+
 It's getting increasingly impossible to keep up with AI:
 
 - published papers on arXiv growing exponentially
@@ -21,3 +23,19 @@ It's getting increasingly impossible to keep up with AI:
 [software 3.0](https://twitter.com/karpathy/status/1273786314140160001?s=20)
 
 Things to consider in prompting: Direction, Format, Examples, Evaluation, Division
+
+Prompt engineering is the process of discovering prompts which reliably yield useful or desired results.
+
+Five principles of prompting:
+
+1. Giving direction: Describe what you're imagining, to get output that matches your vision
+
+2. Specifying format: Define your required response format, to minimize time spent parsing errors
+
+3. Providing examples: Integrate examples in your prompts, and improve the reliability of your prompt
+
+4. Evaluating quality: Identify errors to iterate and improve on the reliability of your responses
+
+5. Dividing labor: User the right model and the right prompt for the right job, then chain them together for sophisticated tasks
+
+
