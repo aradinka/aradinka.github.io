@@ -14,6 +14,10 @@ It's getting increasingly impossible to keep up with AI:
 - open source AI projects (stable diffusion, AgentGPT) are the fastest growing projects on GitHub
 - Midjourney discord server has 15M members
 
+It is becoming increasingly challenging to stay updated with the rapid advancements in the field of artificial intelligence (AI). The number of published papers on arXiv, a popular platform for scientific research, is growing exponentially, making it difficult to keep track of the latest developments. Additionally, open-source AI projects such as stable diffusion and AgentGPT are among the fastest-growing projects on GitHub, indicating the widespread interest and active participation in AI research and development. Furthermore, communities like Midjourney discord serve as hubs for AI enthusiasts, fostering collaboration, knowledge sharing, and further accelerating the pace of AI innovation. As AI continues to evolve at an unprecedented rate, it is crucial for individuals and organizations to actively engage with these resources to stay informed and contribute to the advancement of this transformative technology.
+  
+
+
 > AI results are non-deterministic
 
 > The doomer narrative that AI will take all our jobs is likely overblown, the productivity boost from working with AI is real
