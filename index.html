@@ -61,6 +61,17 @@
     /* Header */
     header {
       margin-bottom: 128px;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      width: 100%;
+    }
+
+    .header-identity {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -79,6 +90,25 @@
       font-weight: 500;
       line-height: 1;
       color: var(--text-secondary);
+    }
+
+    header .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    header .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background-color: #2f8f5b;
+      flex-shrink: 0;
     }
 
     /* Sections */
@@ -393,18 +423,24 @@
     .more-text a:hover {
       text-decoration: none;
     }
+
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <a href="index.html">Azka Radinka</a>
-      <span class="subtitle">Analytics Engineer</span>
+      <div class="header-top">
+        <div class="header-identity">
+          <a href="index.html">Azka Radinka</a>
+          <span class="subtitle">Analytics Engineer</span>
+        </div>
+        <span class="status"><span class="status-dot" aria-hidden="true"></span>Open to Work</span>
+      </div>
     </header>
 
     <!-- Today -->
     <section>
-      <span class="section-title">Today</span>
+      <span class="section-title">Now</span>
       <span class="section-text">I work on the Data team at <span class="inline-link-hover"><a class="inline-link" href="https://www.koltiva.com/">Koltiva</a><span class="inline-link-hover-preview" aria-hidden="true"></span></span>. I build ML data pipelines, models, and dashboards.</span>
       <span class="section-text">Previously, I worked on the Technical AI Team at DDB Telkom.</span>
     </section>

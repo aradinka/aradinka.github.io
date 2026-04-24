@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azka Radinka — Rebrand</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@400;500;600&family=Outfit:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800;900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; }
+    body { overflow-x: hidden; }
+    #root { min-height: 100vh; }
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    img { user-select: none; -webkit-user-drag: none; }
+  </style>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "variation": "darkMag"
+}/*EDITMODE-END*/;
+
+/* ══════════════════════════════════════════════════
+   THEMES
+   ══════════════════════════════════════════════════ */
+const THEMES = {
+  magazine: {
+    name: "Classic Editorial",
+    fonts: { display: "'Playfair Display', Georgia, serif", body: "'Source Serif 4', Georgia, serif", accent: "'Playfair Display', Georgia, serif" },
+    colors: { bg: "#FAF7F2", bgAlt: "#F0EBE3", text: "#1A1A1A", textMuted: "#6B6259", accent: "#C4553A", border: "#DDD5CA", cardBg: "#FFFFFF", cardShadow: "0 2px 20px rgba(0,0,0,0.06)", hoverBg: "rgba(196,85,58,0.06)" },
+    borderRadius: "2px",
+  },
+  darkMag: {
+    name: "Noir Journal",
+    fonts: { display: "'Space Grotesk', sans-serif", body: "'DM Sans', sans-serif", accent: "'Space Grotesk', sans-serif" },
+    colors: { bg: "#0D0D0D", bgAlt: "#161616", text: "#E8E4DF", textMuted: "#8A8580", accent: "#FF6B35", border: "#2A2725", cardBg: "#1A1917", cardShadow: "0 4px 30px rgba(0,0,0,0.4)", hoverBg: "rgba(255,107,53,0.08)" },
+    borderRadius: "8px",
+  },
+  swiss: {
+    name: "Swiss Grid",
+    fonts: { display: "'Outfit', sans-serif", body: "'Work Sans', sans-serif", accent: "'Outfit', sans-serif" },
+    colors: { bg: "#FFFFFF", bgAlt: "#F2F2F2", text: "#111111", textMuted: "#666666", accent: "#E63222", border: "#DDDDDD", cardBg: "#F7F7F7", cardShadow: "none", hoverBg: "rgba(230,50,34,0.05)" },
+    borderRadius: "0px",
+  },
+  warmOrganic: {
+    name: "Warm Organic",
+    fonts: { display: "'Lora', Georgia, serif", body: "'Nunito', sans-serif", accent: "'Lora', Georgia, serif" },
+    colors: { bg: "#FDF8F0", bgAlt: "#F5ECE0", text: "#2D2418", textMuted: "#7A6E5F", accent: "#B8763E", border: "#E2D8CC", cardBg: "#FFFDF9", cardShadow: "0 4px 16px rgba(45,36,24,0.06)", hoverBg: "rgba(184,118,62,0.07)" },
+    borderRadius: "16px",
+  },
+  neoBrutalist: {
+    name: "Neo-Brutal",
+    fonts: { display: "'Syne', sans-serif", body: "'Space Mono', monospace", accent: "'Syne', sans-serif" },
+    colors: { bg: "#F5F0EB", bgAlt: "#FFE566", text: "#111111", textMuted: "#444444", accent: "#FF3D00", border: "#111111", cardBg: "#FFFFFF", cardShadow: "4px 4px 0px #111111", hoverBg: "#FFE566" },
+    borderRadius: "0px",
+  },
+};
+
+/* ══════════════════════════════════════════════════
+   CONTENT DATA
+   ══════════════════════════════════════════════════ */
+const WORK_ITEMS = [
+  {
+    id: "farmcloud", title: "FarmCloud AI", desc: "Our showcase on AWS Summit",
+    images: ["aws_summit_1.jpeg", "aws_summit_2.jpeg", "aws_summit_3.jpeg"],
+    content: [
+      "Koltiva got the chance to present Agribot at AWS Summit, sharing how we built an AI assistant that helps farmers get real-time farming advice, powered by Amazon Bedrock.",
+      "We were also one of the first startups selected and sponsored by AWS to present an Amazon Bedrock use case."
+    ],
+  },
+];
+
+const ACTIVITY_ITEMS = [
+  {
+    id: "merch-hunting", title: "Merch Hunting", desc: "AWS AgentCore Event",
+    images: ["aws_agentcore_3.jpeg", "aws_agentcore_2.jpeg", "aws_agentcore_1jpeg.jpeg"],
+    content: [
+      "I joined the AWS AgentCore event as a representative of Koltiva. Since we had already implemented Amazon Bedrock in our work, the event was a chance to see how AWS is thinking about a more agentic approach with AgentCore.",
+      "And yes, getting some merch at the end was a nice bonus too."
+    ],
+  },
+  {
+    id: "ac-ventures", title: "AC Ventures Capital", desc: "Networking Event",
+    images: ["google_acventures_1.jpeg", "google_acventures_2.jpeg", "google_acventures_3.jpeg"],
+    content: [
+      "AC Ventures and Google brought portfolio companies together at Google Indonesia for a generative AI workshop focused on how teams can use new tools to grow more effectively.",
+      "Founders and core AI teams from the ACV network, including Soul Parking, Koltiva, Kargo Technologies, and Skorlife, joined to exchange ideas and see where AI can create leverage across different kinds of businesses."
+    ],
+  },
+];
+
+/* ══════════════════════════════════════════════════
+   COMPONENTS
+   ══════════════════════════════════════════════════ */
+
+function Nav({ theme, currentPage, onNavigate }) {
+  const t = THEMES[theme];
+  const isBrut = theme === "neoBrutalist";
+  const isSwiss = theme === "swiss";
+  return (
+    <nav style={{
+      display: "flex", justifyContent: "space-between", alignItems: "center",
+      padding: "20px 0",
+      borderBottom: isBrut ? `3px solid ${t.colors.border}` : isSwiss ? `2px solid ${t.colors.text}` : `1px solid ${t.colors.border}`,
+      marginBottom: "40px",
+    }}>
+      <a onClick={() => onNavigate("home")} style={{
+        fontFamily: t.fonts.display, fontSize: isBrut ? "20px" : "18px",
+        fontWeight: isBrut ? 800 : 600, color: t.colors.text, cursor: "pointer",
+        letterSpacing: isSwiss ? "0.05em" : isBrut ? "-0.02em" : "normal",
+        textTransform: isSwiss ? "uppercase" : "none", textDecoration: "none",
+      }}>Azka Radinka</a>
+      <div style={{ display: "flex", gap: isBrut ? "16px" : "24px", fontFamily: t.fonts.body, fontSize: isBrut ? "13px" : "14px" }}>
+        {[["home", "Work"], ["activities", "Activities"]].map(([key, label]) => {
+          const active = key === "home" ? currentPage === "home" : currentPage.startsWith("activity");
+          return (
+            <a key={key} onClick={() => onNavigate("home")} style={{
+              color: active ? t.colors.accent : t.colors.textMuted, textDecoration: "none", cursor: "pointer",
+              fontWeight: active ? 600 : 400,
+              letterSpacing: isSwiss ? "0.04em" : "normal", textTransform: isSwiss ? "uppercase" : "none",
+              borderBottom: active && isBrut ? `2px solid ${t.colors.accent}` : "none",
+            }}>{label}</a>
+          );
+        })}
+        <a href="mailto:azkaradinka@gmail.com" style={{
+          color: t.colors.textMuted, textDecoration: "none",
+          letterSpacing: isSwiss ? "0.04em" : "normal", textTransform: isSwiss ? "uppercase" : "none",
+        }}>Contact</a>
+      </div>
+    </nav>
+  );
+}
+
+function HeroSection({ theme }) {
+  const t = THEMES[theme];
+  const heroes = {
+    magazine: (
+      <section style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", alignItems: "end", marginBottom: "64px" }}>
+        <div>
+          <h1 style={{ fontFamily: t.fonts.display, fontSize: "clamp(36px, 5vw, 56px)", fontWeight: 400, lineHeight: 1.1, color: t.colors.text, fontStyle: "italic", marginBottom: "16px" }}>Analytics<br/>Engineer</h1>
+          <div style={{ width: "48px", height: "2px", background: t.colors.accent }}></div>
+        </div>
+        <p style={{ fontFamily: t.fonts.body, fontSize: "16px", lineHeight: 1.7, color: t.colors.textMuted }}>
+          Building ML data pipelines, models, and dashboards on the Data team at Koltiva. Previously at DDB Telkom.
+        </p>
+      </section>
+    ),
+    darkMag: (
+      <section style={{ padding: "80px 0 60px", marginBottom: "64px" }}>
+        <span style={{ fontFamily: t.fonts.accent, fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", color: t.colors.accent, display: "block", marginBottom: "20px" }}>Analytics Engineer</span>
+        <h1 style={{ fontFamily: t.fonts.display, fontSize: "clamp(40px, 6vw, 72px)", fontWeight: 700, lineHeight: 1.05, color: t.colors.text, marginBottom: "24px", letterSpacing: "-0.03em" }}>Data, ML &<br/>Pipelines</h1>
+        <p style={{ fontFamily: t.fonts.body, fontSize: "17px", lineHeight: 1.7, color: t.colors.textMuted, maxWidth: "480px" }}>Building ML data pipelines, models, and dashboards on the Data team at Koltiva. Previously at DDB Telkom.</p>
+      </section>
+    ),
+    swiss: (
+      <section style={{ paddingTop: "24px", marginBottom: "64px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "16px", alignItems: "start", marginBottom: "32px" }}>
+          <div style={{ width: "12px", height: "12px", background: t.colors.accent, marginTop: "8px" }}></div>
+          <span style={{ fontFamily: t.fonts.body, fontSize: "13px", letterSpacing: "0.08em", textTransform: "uppercase", color: t.colors.textMuted }}>Analytics Engineer — Data Team, Koltiva</span>
+        </div>
+        <h1 style={{ fontFamily: t.fonts.display, fontSize: "clamp(48px, 7vw, 96px)", fontWeight: 800, lineHeight: 0.95, color: t.colors.text, letterSpacing: "-0.04em", marginBottom: "24px" }}>AZKA<br/>RADINKA</h1>
+        <p style={{ fontFamily: t.fonts.body, fontSize: "15px", lineHeight: 1.7, color: t.colors.textMuted, maxWidth: "420px" }}>ML data pipelines, models, and dashboards. Previously at the Technical AI Team, DDB Telkom.</p>
+      </section>
+    ),
+    warmOrganic: (
+      <section style={{ textAlign: "center", padding: "48px 0 32px", marginBottom: "64px" }}>
+        <div style={{ width: "60px", height: "60px", borderRadius: "50%", background: `linear-gradient(135deg, ${t.colors.accent}, ${t.colors.bgAlt})`, margin: "0 auto 24px", opacity: 0.7 }}></div>
+        <h1 style={{ fontFamily: t.fonts.display, fontSize: "clamp(32px, 4vw, 44px)", fontWeight: 500, lineHeight: 1.2, color: t.colors.text, marginBottom: "12px" }}>Azka Radinka</h1>
+        <p style={{ fontFamily: t.fonts.body, fontSize: "16px", color: t.colors.textMuted, marginBottom: "20px" }}>Analytics Engineer at Koltiva</p>
+        <p style={{ fontFamily: t.fonts.body, fontSize: "15px", lineHeight: 1.8, color: t.colors.textMuted, maxWidth: "500px", margin: "0 auto" }}>Building ML data pipelines, models, and dashboards. Previously at DDB Telkom.</p>
+      </section>
+    ),
+    neoBrutalist: (
+      <section style={{ padding: "32px 0 24px", marginBottom: "64px" }}>
+        <div style={{ display: "inline-block", background: t.colors.bgAlt, padding: "6px 14px", marginBottom: "20px", border: `2px solid ${t.colors.border}`, fontFamily: t.fonts.body, fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em" }}>Analytics Engineer</div>
+        <h1 style={{ fontFamily: t.fonts.display, fontSize: "clamp(42px, 7vw, 80px)", fontWeight: 900, lineHeight: 0.95, color: t.colors.text, letterSpacing: "-0.02em", marginBottom: "20px", textTransform: "uppercase" }}>Azka<br/>Radinka</h1>
+        <p style={{ fontFamily: t.fonts.body, fontSize: "14px", lineHeight: 1.7, color: t.colors.textMuted, maxWidth: "460px", borderLeft: `3px solid ${t.colors.accent}`, paddingLeft: "16px" }}>Building ML data pipelines, models, and dashboards on the Data team at Koltiva. Previously at DDB Telkom.</p>
+      </section>
+    ),
+  };
+  return heroes[theme] || null;
+}
+
+function SectionTitle({ theme, children }) {
+  const t = THEMES[theme];
+  const map = {
+    magazine: { fontFamily: t.fonts.display, fontSize: "14px", fontWeight: 400, fontStyle: "italic", color: t.colors.accent, marginBottom: "24px" },
+    darkMag: { fontFamily: t.fonts.accent, fontSize: "11px", fontWeight: 500, color: t.colors.accent, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "24px" },
+    swiss: { fontFamily: t.fonts.display, fontSize: "11px", fontWeight: 700, color: t.colors.text, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "20px", borderBottom: `2px solid ${t.colors.accent}`, paddingBottom: "8px", display: "inline-block" },
+    warmOrganic: { fontFamily: t.fonts.display, fontSize: "22px", fontWeight: 500, color: t.colors.text, marginBottom: "20px" },
+    neoBrutalist: { fontFamily: t.fonts.display, fontSize: "16px", fontWeight: 800, textTransform: "uppercase", marginBottom: "16px", background: t.colors.bgAlt, display: "inline-block", padding: "4px 12px", border: `2px solid ${t.colors.border}` },
+  };
+  return <h2 style={map[theme]}>{children}</h2>;
+}
+
+function ItemCard({ theme, title, desc, images, onClick, variant }) {
+  const t = THEMES[theme];
+  const [hovered, setHovered] = React.useState(false);
+  const isSmall = variant === "activity" && theme === "magazine";
+
+  const cardRenderers = {
+    magazine: () => isSmall ? (
+      <div onClick={onClick} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+        style={{ padding: "16px", cursor: "pointer", borderBottom: `1px solid ${t.colors.border}`, background: hovered ? t.colors.hoverBg : "transparent", transition: "background 0.25s", display: "flex", gap: "16px", alignItems: "center" }}>
+        <div style={{ width: "56px", height: "56px", borderRadius: "50%", overflow: "hidden", flexShrink: 0 }}>
+          <img src={images[0]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        </div>
+        <div>
+          <h3 style={{ fontFamily: t.fonts.display, fontSize: "17px", fontWeight: 400, color: t.colors.text, fontStyle: "italic", marginBottom: "2px" }}>{title}</h3>
+          <p style={{ fontFamily: t.fonts.body, fontSize: "13px", color: t.colors.textMuted }}>{desc}</p>
+        </div>
+      </div>
+    ) : (
+      <div onClick={onClick} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+        style={{ display: "grid", gridTemplateColumns: "140px 1fr", gap: "24px", padding: "20px 16px", cursor: "pointer", borderBottom: `1px solid ${t.colors.border}`, background: hovered ? t.colors.hoverBg : "transparent", transition: "background 0.25s" }}>
+        <div style={{ width: "140px", height: "90px", overflow: "hidden", borderRadius: t.borderRadius }}>
+          <img src={images[0]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.4s", transform: hovered ? "scale(1.05)" : "scale(1)" }} />
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <h3 style={{ fontFamily: t.fonts.display, fontSize: "20px", fontWeight: 400, color: t.colors.text, fontStyle: "italic", marginBottom: "6px" }}>{title}</h3>
+          <p style={{ fontFamily: t.fonts.body, fontSize: "14px", color: t.colors.textMuted }}>{desc}</p>
+        </div>
+      </div>
+    ),
+    darkMag: () => (
+      <div onClick={onClick} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+        style={{ position: "relative", borderRadius: t.borderRadius, overflow: "hidden", cursor: "pointer", height: "220px", background: t.colors.cardBg, border: `1px solid ${hovered ? t.colors.accent : t.colors.border}`, transition: "border-color 0.3s" }}>
+        <img src={images[0]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", opacity: hovered ? 0.5 : 0.35, transition: "opacity 0.4s, transform 0.5s", transform: hovered ? "scale(1.03)" : "scale(1)" }} />
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "24px", background: "linear-gradient(transparent, rgba(0,0,0,0.8))" }}>
+          <h3 style={{ fontFamily: t.fonts.display, fontSize: "22px", fontWeight: 600, color: "#fff", letterSpacing: "-0.02em", marginBottom: "4px" }}>{title}</h3>
+          <p style={{ fontFamily: t.fonts.body, fontSize: "13px", color: "rgba(255,255,255,0.6)" }}>{desc}</p>
+        </div>
+      </div>
+    ),
+    swiss: () => (
+      <div onClick={onClick} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+        style={{ cursor: "pointer", border: `1px solid ${t.colors.border}`, background: hovered ? t.colors.hoverBg : t.colors.cardBg, transition: "background 0.2s" }}>
+        <div style={{ height: "160px", overflow: "hidden" }}>
+          <img src={images[0]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.4s", transform: hovered ? "scale(1.03)" : "scale(1)" }} />
+        </div>
+        <div style={{ padding: "16px 20px" }}>
+          <h3 style={{ fontFamily: t.fonts.display, fontSize: "16px", fontWeight: 700, color: t.colors.text, marginBottom: "4px" }}>{title}</h3>
+          <p style={{ fontFamily: t.fonts.body, fontSize: "13px", color: t.colors.textMuted }}>{desc}</p>
+        </div>
+      </div>
+    ),
+    warmOrganic: () => (
+      <div onClick={onClick} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+        style={{ cursor: "pointer", borderRadius: t.borderRadius, overflow: "hidden", background: t.colors.cardBg, boxShadow: hovered ? "0 8px 32px rgba(45,36,24,0.1)" : t.colors.cardShadow, transition: "box-shadow 0.3s, transform 0.3s", transform: hovered ? "translateY(-2px)" : "none" }}>
+        <div style={{ height: "180px", overflow: "hidden" }}>
+          <img src={images[0]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.5s", transform: hovered ? "scale(1.04)" : "scale(1)" }} />
+        </div>
+        <div style={{ padding: "20px 24px" }}>
+          <h3 style={{ fontFamily: t.fonts.display, fontSize: "20px", fontWeight: 500, color: t.colors.text, marginBottom: "6px" }}>{title}</h3>
+          <p style={{ fontFamily: t.fonts.body, fontSize: "14px", color: t.colors.textMuted }}>{desc}</p>
+        </div>
+      </div>
+    ),
+    neoBrutalist: () => (
+      <div onClick={onClick} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+        style={{ cursor: "pointer", border: `3px solid ${t.colors.border}`, background: hovered ? t.colors.hoverBg : t.colors.cardBg, boxShadow: hovered ? "6px 6px 0px #111" : t.colors.cardShadow, transition: "box-shadow 0.15s, transform 0.15s, background 0.15s", transform: hovered ? "translate(-2px, -2px)" : "none" }}>
+        <div style={{ height: "160px", overflow: "hidden", borderBottom: `3px solid ${t.colors.border}` }}>
+          <img src={images[0]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        </div>
+        <div style={{ padding: "16px 20px" }}>
+          <h3 style={{ fontFamily: t.fonts.display, fontSize: "18px", fontWeight: 800, textTransform: "uppercase", marginBottom: "4px" }}>{title}</h3>
+          <p style={{ fontFamily: t.fonts.body, fontSize: "12px", color: t.colors.textMuted }}>{desc}</p>
+        </div>
+      </div>
+    ),
+  };
+  return cardRenderers[theme]();
+}
+
+function DetailPage({ theme, data, onBack }) {
+  const t = THEMES[theme];
+  const isBrut = theme === "neoBrutalist";
+  const isSwiss = theme === "swiss";
+  return (
+    <div style={{ animation: "fadeSlideIn 0.4s ease" }}>
+      <button onClick={onBack} style={{
+        fontFamily: t.fonts.body, fontSize: "14px", color: t.colors.textMuted, background: "none", border: "none", cursor: "pointer", padding: "8px 0", marginBottom: "32px",
+        letterSpacing: isSwiss ? "0.04em" : "normal", textTransform: isSwiss ? "uppercase" : "none",
+      }}
+        onMouseEnter={e => e.target.style.color = t.colors.accent}
+        onMouseLeave={e => e.target.style.color = t.colors.textMuted}>
+        ← Back
+      </button>
+      <h1 style={{
+        fontFamily: t.fonts.display,
+        fontSize: isSwiss ? "clamp(36px, 5vw, 64px)" : isBrut ? "clamp(32px, 5vw, 56px)" : "clamp(28px, 4vw, 44px)",
+        fontWeight: theme === "magazine" ? 400 : isBrut ? 900 : 600,
+        fontStyle: theme === "magazine" ? "italic" : "normal",
+        color: t.colors.text, lineHeight: 1.1, marginBottom: "12px",
+        letterSpacing: isSwiss ? "-0.03em" : isBrut ? "-0.02em" : "normal",
+        textTransform: isBrut ? "uppercase" : "none",
+      }}>{data.title}</h1>
+      <p style={{ fontFamily: t.fonts.body, fontSize: "16px", color: t.colors.textMuted, marginBottom: "40px" }}>{data.desc}</p>
+
+      {data.images[0] && (
+        <div style={{ width: "100%", height: "320px", borderRadius: isBrut ? "0" : t.borderRadius, overflow: "hidden", marginBottom: "32px", border: isBrut ? `3px solid ${t.colors.border}` : "none", boxShadow: isBrut ? t.colors.cardShadow : "none" }}>
+          <img src={data.images[0]} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        </div>
+      )}
+
+      {data.content.map((para, i) => (
+        <React.Fragment key={i}>
+          <p style={{ fontFamily: t.fonts.body, fontSize: "16px", lineHeight: 1.8, color: t.colors.textMuted, marginBottom: "24px", maxWidth: "600px", textWrap: "pretty" }}>{para}</p>
+          {i === 0 && data.images.length > 1 && (
+            <div style={{ display: "grid", gridTemplateColumns: data.images.length > 2 ? "1fr 1fr" : "1fr", gap: "16px", marginBottom: "32px" }}>
+              {data.images.slice(1).map((img, j) => (
+                <div key={j} style={{ height: "200px", borderRadius: isBrut ? "0" : t.borderRadius, overflow: "hidden", border: isBrut ? `3px solid ${t.colors.border}` : "none", boxShadow: isBrut ? "3px 3px 0 #111" : "none" }}>
+                  <img src={img} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                </div>
+              ))}
+            </div>
+          )}
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════════════════
+   APP
+   ══════════════════════════════════════════════════ */
+function App() {
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const theme = tweaks.variation || "magazine";
+  const switchTheme = (v) => setTweak('variation', v);
+  const t = THEMES[theme];
+
+  const [page, setPage] = React.useState("home");
+  const [detailData, setDetailData] = React.useState(null);
+
+  const navigate = (target, data) => {
+    if (target === "home") { setPage("home"); setDetailData(null); }
+    else { setPage("detail"); setDetailData(data); }
+    window.scrollTo({ top: 0 });
+  };
+
+  const isGrid = theme === "swiss";
+  const containerWidth = isGrid ? "960px" : theme === "darkMag" ? "780px" : "720px";
+
+  return (
+    <div style={{ minHeight: "100vh", background: t.colors.bg, color: t.colors.text, transition: "background 0.5s, color 0.5s" }}>
+      <div style={{ maxWidth: containerWidth, margin: "0 auto", padding: "32px 28px" }}>
+        <Nav theme={theme} currentPage={page} onNavigate={p => navigate(p)} />
+
+        {page === "home" ? (
+          <div style={{ animation: "fadeSlideIn 0.4s ease" }}>
+            <HeroSection theme={theme} />
+
+            <section style={{ marginBottom: "64px" }}>
+              <SectionTitle theme={theme}>Recent Work</SectionTitle>
+              <div style={{ display: isGrid ? "grid" : "flex", gridTemplateColumns: isGrid ? "1fr 1fr" : undefined, flexDirection: isGrid ? undefined : "column", gap: theme === "magazine" ? "0" : isGrid ? "16px" : "20px" }}>
+                {WORK_ITEMS.map(item => (
+                  <ItemCard key={item.id} theme={theme} title={item.title} desc={item.desc} images={item.images} onClick={() => navigate("detail", item)} variant="work" />
+                ))}
+              </div>
+            </section>
+
+            <section style={{ marginBottom: "64px" }}>
+              <SectionTitle theme={theme}>Recent Activities</SectionTitle>
+              <div style={{ display: isGrid ? "grid" : "flex", gridTemplateColumns: isGrid ? "1fr 1fr" : undefined, flexDirection: isGrid ? undefined : "column", gap: theme === "magazine" ? "0" : isGrid ? "16px" : "20px" }}>
+                {ACTIVITY_ITEMS.map(item => (
+                  <ItemCard key={item.id} theme={theme} title={item.title} desc={item.desc} images={item.images} onClick={() => navigate("detail", item)} variant="activity" />
+                ))}
+              </div>
+            </section>
+
+            <section>
+              <SectionTitle theme={theme}>More</SectionTitle>
+              <p style={{ fontFamily: t.fonts.body, fontSize: "15px", color: t.colors.textMuted, lineHeight: 1.7 }}>
+                Reach me at{" "}
+                <a href="mailto:azkaradinka@gmail.com" style={{ color: t.colors.accent, textDecoration: "none", borderBottom: `1px solid ${t.colors.accent}`, paddingBottom: "1px" }}>azkaradinka@gmail.com</a>.
+              </p>
+            </section>
+
+            <footer style={{ marginTop: "80px", paddingTop: "24px", borderTop: theme === "neoBrutalist" ? `3px solid ${t.colors.border}` : `1px solid ${t.colors.border}`, display: "flex", justifyContent: "space-between", paddingBottom: "40px" }}>
+              <span style={{ fontFamily: t.fonts.body, fontSize: "13px", color: t.colors.textMuted }}>
+                <a href="mailto:azkaradinka@gmail.com" style={{ color: t.colors.textMuted, textDecoration: "none" }}>azkaradinka@gmail.com</a>
+              </span>
+              <span style={{ fontFamily: t.fonts.body, fontSize: "12px", color: t.colors.textMuted, opacity: 0.5 }}>© 2026</span>
+            </footer>
+          </div>
+        ) : (
+          <DetailPage theme={theme} data={detailData} onBack={() => navigate("home")} />
+        )}
+      </div>
+
+      {/* Floating theme switcher */}
+      <div style={{
+        position: "fixed", bottom: "24px", left: "50%", transform: "translateX(-50%)",
+        display: "flex", gap: "6px", padding: "8px 12px",
+        background: theme === "darkMag" ? "rgba(22,22,22,0.92)" : "rgba(255,255,255,0.92)",
+        backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
+        borderRadius: "40px", boxShadow: "0 4px 24px rgba(0,0,0,0.15)",
+        border: `1px solid ${theme === "darkMag" ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.08)"}`,
+        zIndex: 9999,
+      }}>
+        {[
+          { value: "magazine", label: "Editorial", color: "#C4553A" },
+          { value: "darkMag", label: "Noir", color: "#FF6B35" },
+          { value: "swiss", label: "Swiss", color: "#E63222" },
+          { value: "warmOrganic", label: "Organic", color: "#B8763E" },
+          { value: "neoBrutalist", label: "Brutal", color: "#FF3D00" },
+        ].map(opt => {
+          const active = theme === opt.value;
+          return (
+            <button key={opt.value} onClick={() => {
+              switchTheme(opt.value);
+            }} style={{
+              padding: "8px 16px", borderRadius: "24px", border: "none", cursor: "pointer",
+              fontFamily: "'DM Sans', sans-serif", fontSize: "13px", fontWeight: active ? 600 : 400,
+              background: active ? opt.color : "transparent",
+              color: active ? "#fff" : (theme === "darkMag" ? "rgba(255,255,255,0.6)" : "rgba(0,0,0,0.5)"),
+              transition: "all 0.25s",
+            }}>{opt.label}</button>
+          );
+        })}
+      </div>
+
+      <TweaksPanel title="Rebrand">
+        <TweakSection label="Aesthetic Direction">
+          <TweakRadio label="Variation" prop="variation" options={[
+            { value: "magazine", label: "Classic Editorial" },
+            { value: "darkMag", label: "Noir Journal" },
+            { value: "swiss", label: "Swiss Grid" },
+            { value: "warmOrganic", label: "Warm Organic" },
+            { value: "neoBrutalist", label: "Neo-Brutal" },
+          ]} />
+        </TweakSection>
+      </TweaksPanel>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
