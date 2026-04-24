@@ -158,7 +158,9 @@
       }
     }
 
-    .link-item:hover {
+    .link-item:hover,
+    .link-item:focus-visible,
+    .link-item.is-preview-active {
       background-color: var(--hover-bg);
     }
 
@@ -172,7 +174,94 @@
     }
 
     .link-item-preview {
-      display: none;
+      display: block;
+      position: relative;
+      width: min(188px, 100%);
+      height: 0;
+      margin-top: 0;
+      overflow: hidden;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(8px);
+      transition:
+        height 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+        margin-top 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.18s ease,
+        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .link-item.is-preview-active .link-item-preview,
+    .link-item:focus-visible .link-item-preview {
+      height: 112px;
+      margin-top: 14px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .preview-card {
+      position: absolute;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-secondary);
+      background-image: var(--preview-image, none);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+      transform-origin: center;
+      overflow: hidden;
+      opacity: 0;
+      transition:
+        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.18s ease;
+    }
+
+    .preview-card-one {
+      top: 16px;
+      left: 4px;
+      width: 96px;
+      height: 62px;
+      transform: translate3d(-10px, 14px, 0) rotate(-10deg) scale(0.96);
+    }
+
+    .preview-card-two {
+      top: 8px;
+      left: 42px;
+      width: 104px;
+      height: 70px;
+      transform: translate3d(0, 18px, 0) rotate(8deg) scale(0.96);
+    }
+
+    .preview-card-three {
+      top: 28px;
+      left: 64px;
+      width: 108px;
+      height: 68px;
+      transform: translate3d(12px, 20px, 0) rotate(-3deg) scale(0.94);
+    }
+
+    .link-item:hover .preview-card,
+    .link-item:focus-visible .preview-card,
+    .link-item.is-preview-active .preview-card {
+      opacity: 1;
+    }
+
+    .link-item:hover .preview-card-one,
+    .link-item:focus-visible .preview-card-one,
+    .link-item.is-preview-active .preview-card-one {
+      transform: translate3d(0, 0, 0) rotate(-8deg) scale(1);
+    }
+
+    .link-item:hover .preview-card-two,
+    .link-item:focus-visible .preview-card-two,
+    .link-item.is-preview-active .preview-card-two {
+      transform: translate3d(0, 0, 0) rotate(6deg) scale(1);
+    }
+
+    .link-item:hover .preview-card-three,
+    .link-item:focus-visible .preview-card-three,
+    .link-item.is-preview-active .preview-card-three {
+      transform: translate3d(0, 0, 0) rotate(-2deg) scale(1);
     }
 
     @media (min-width: 768px) {
@@ -182,39 +271,25 @@
       }
 
       .link-item-preview {
-        display: block;
         position: absolute;
         top: 50%;
         right: 16px;
         width: 216px;
         height: 132px;
+        margin-top: 0;
         transform: translateY(-50%);
-        pointer-events: none;
         opacity: 0;
+        overflow: visible;
         transition: opacity 0.18s ease;
       }
 
       .link-item:hover .link-item-preview,
-      .link-item:focus-visible .link-item-preview {
+      .link-item:focus-visible .link-item-preview,
+      .link-item.is-preview-active .link-item-preview {
+        height: 132px;
+        margin-top: 0;
         opacity: 1;
-      }
-
-    .preview-card {
-        position: absolute;
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        background: var(--bg-secondary);
-        background-image: var(--preview-image, none);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
-        transform-origin: center;
-        overflow: hidden;
-        opacity: 0;
-        transition:
-          transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-          opacity 0.18s ease;
+        transform: translateY(-50%);
       }
 
       .preview-card-one {
@@ -358,5 +433,66 @@
       <p class="more-text">Reach me at <a href="mailto:azkaradinka@gmail.com">azkaradinka@gmail.com</a>.</p>
     </section>
   </div>
+  <script>
+    (() => {
+      const linkItems = Array.from(document.querySelectorAll('.link-item'));
+
+      if (!linkItems.length) {
+        return;
+      }
+
+      const touchQuery = window.matchMedia('(hover: none), (pointer: coarse)');
+
+      const clearActiveItem = () => {
+        linkItems.forEach((item) => item.classList.remove('is-preview-active'));
+      };
+
+      const hasModifierKey = (event) => event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+
+      const shouldHandleAsTouch = () => touchQuery.matches;
+
+      linkItems.forEach((item) => {
+        item.addEventListener('click', (event) => {
+          if (!shouldHandleAsTouch() || hasModifierKey(event)) {
+            return;
+          }
+
+          if (item.classList.contains('is-preview-active')) {
+            return;
+          }
+
+          event.preventDefault();
+          clearActiveItem();
+          item.classList.add('is-preview-active');
+        });
+      });
+
+      document.addEventListener('pointerdown', (event) => {
+        if (!shouldHandleAsTouch()) {
+          return;
+        }
+
+        if (event.target.closest('.link-item')) {
+          return;
+        }
+
+        clearActiveItem();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          clearActiveItem();
+        }
+      });
+
+      window.addEventListener('pagehide', clearActiveItem);
+
+      if (typeof touchQuery.addEventListener === 'function') {
+        touchQuery.addEventListener('change', clearActiveItem);
+      } else if (typeof touchQuery.addListener === 'function') {
+        touchQuery.addListener(clearActiveItem);
+      }
+    })();
+  </script>
 </body>
 </html>
