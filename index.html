@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azka Radinka</title>
+  <meta name="description" content="Azka Radinka's personal site covering recent work and activities.">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --bg-secondary: #f5f4f4;
+      --text-primary: #171717;
+      --text-secondary: #6f6f6f;
+      --hover-bg: #f5f4f4;
+      --border: #e5e5e5;
+      --input-bg: #ffffff;
+      --input-border: #d4d4d4;
+    }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+      background-color: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.5;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 692px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      overflow-x: hidden;
+    }
+
+    @media (min-width: 640px) {
+      .container {
+        padding: 128px 24px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding: 64px 24px;
+      }
+    }
+
+    /* Header */
+    header {
+      margin-bottom: 128px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    header a {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    header .subtitle {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1;
+      color: var(--text-secondary);
+    }
+
+    /* Sections */
+    section {
+      margin-top: 64px;
+    }
+
+    @media (min-width: 640px) {
+      section {
+        margin-top: 128px;
+      }
+    }
+
+    .section-title {
+      display: block;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 640px) {
+      .section-title {
+        margin-bottom: 24px;
+      }
+    }
+
+    .section-text {
+      color: var(--text-secondary);
+      display: block;
+    }
+
+    .section-text + .section-text {
+      margin-top: 16px;
+    }
+
+    .inline-link {
+      color: var(--text-primary);
+      text-decoration: none;
+      background-image: linear-gradient(currentColor, currentColor);
+      background-position: 0 100%;
+      background-repeat: no-repeat;
+      background-size: 0 1px;
+      transition: background-size 0.2s ease-out;
+    }
+
+    .inline-link:hover,
+    .inline-link:focus-visible {
+      background-size: 100% 1px;
+    }
+
+    /* Link items (projects & activities) */
+    .link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    @media (min-width: 640px) {
+      .link-list {
+        gap: 8px;
+      }
+    }
+
+    .link-item {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      margin-left: -12px;
+      margin-right: -12px;
+      padding: 0 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: inherit;
+      transition: background-color 0.15s ease;
+    }
+
+    @media (min-width: 640px) {
+      .link-item {
+        padding: 12px 12px;
+      }
+    }
+
+    .link-item:hover {
+      background-color: var(--hover-bg);
+    }
+
+    .link-item-title {
+      font-weight: 400;
+      color: var(--text-primary);
+    }
+
+    .link-item-desc {
+      color: var(--text-secondary);
+    }
+
+    .link-item-preview {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .link-item {
+        min-height: 88px;
+        justify-content: center;
+      }
+
+      .link-item-preview {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        width: 216px;
+        height: 132px;
+        transform: translateY(-50%);
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.18s ease;
+      }
+
+      .link-item:hover .link-item-preview,
+      .link-item:focus-visible .link-item-preview {
+        opacity: 1;
+      }
+
+    .preview-card {
+        position: absolute;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--bg-secondary);
+        background-image: var(--preview-image, none);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+        transform-origin: center;
+        overflow: hidden;
+        opacity: 0;
+        transition:
+          transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 0.18s ease;
+      }
+
+      .preview-card-one {
+        top: 18px;
+        left: 10px;
+        width: 116px;
+        height: 76px;
+        transform: translate3d(-10px, 14px, 0) rotate(-10deg) scale(0.96);
+      }
+
+      .preview-card-two {
+        top: 8px;
+        left: 58px;
+        width: 124px;
+        height: 84px;
+        transform: translate3d(0, 18px, 0) rotate(8deg) scale(0.96);
+      }
+
+      .preview-card-three {
+        top: 36px;
+        left: 76px;
+        width: 128px;
+        height: 80px;
+        transform: translate3d(12px, 20px, 0) rotate(-3deg) scale(0.94);
+      }
+
+      .link-item:hover .preview-card,
+      .link-item:focus-visible .preview-card {
+        opacity: 1;
+      }
+
+      .link-item:hover .preview-card-one,
+      .link-item:focus-visible .preview-card-one {
+        transform: translate3d(0, 0, 0) rotate(-8deg) scale(1);
+      }
+
+      .link-item:hover .preview-card-two,
+      .link-item:focus-visible .preview-card-two {
+        transform: translate3d(0, 0, 0) rotate(6deg) scale(1);
+      }
+
+      .link-item:hover .preview-card-three,
+      .link-item:focus-visible .preview-card-three {
+        transform: translate3d(0, 0, 0) rotate(-2deg) scale(1);
+      }
+    }
+
+    /* More section */
+    .more-text {
+      color: var(--text-secondary);
+    }
+
+    .more-text a {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .more-text a:hover {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="index.html">Azka Radinka</a>
+      <span class="subtitle">Analytics Engineer</span>
+    </header>
+
+    <!-- Today -->
+    <section>
+      <span class="section-title">Today</span>
+      <span class="section-text">I work on the Data team at <a class="inline-link" href="https://www.koltiva.com/">Koltiva</a>. I build ML data pipelines, models, and dashboards.</span>
+      <span class="section-text">Previously, I worked on the Technical AI Team at DDB Telkom.</span>
+    </section>
+
+    <!-- Recent Work -->
+    <section>
+      <span class="section-title">Recent Work</span>
+      <div class="link-list">
+        <a class="link-item" href="work/recent-work-farmcloud-ai-aws-summit.html">
+          <span class="link-item-title">FarmCloud AI</span>
+          <span class="link-item-desc">Our showcase on AWS Summit</span>
+          <span class="link-item-preview" aria-hidden="true">
+            <span class="preview-card preview-card-one" style="--preview-image: url('reference/media/aws_summit_3.jpeg');"></span>
+            <span class="preview-card preview-card-two" style="--preview-image: url('reference/media/aws_summit_2.jpeg');"></span>
+            <span class="preview-card preview-card-three" style="--preview-image: url('reference/media/aws_summit_1.jpeg');"></span>
+          </span>
+        </a>
+        <!--
+        <a class="link-item" href="work/recent-work-geospatial-ai.html">
+          <span class="link-item-title">Geospatial AI</span>
+          <span class="link-item-desc">Land Use Monitoring, Satellite Image Processing</span>
+          <span class="link-item-preview" aria-hidden="true">
+            <span class="preview-card preview-card-one"></span>
+            <span class="preview-card preview-card-two"></span>
+            <span class="preview-card preview-card-three"></span>
+          </span>
+        </a>
+        <a class="link-item" href="work/recent-work-polygons-data-pipeline.html">
+          <span class="link-item-title">Polygons Data Pipeline</span>
+          <span class="link-item-desc">Optimize large data filtering</span>
+          <span class="link-item-preview" aria-hidden="true">
+            <span class="preview-card preview-card-one"></span>
+            <span class="preview-card preview-card-two"></span>
+            <span class="preview-card preview-card-three"></span>
+          </span>
+        </a>
+        -->
+      </div>
+    </section>
+
+    <!-- Recent Activities -->
+    <section>
+      <span class="section-title">Recent Activities</span>
+      <div class="link-list">
+        <a class="link-item" href="activities/merch-hunting-aws-agentcore.html">
+          <span class="link-item-title">Merch Hunting</span>
+          <span class="link-item-desc">AWS AgentCore Event</span>
+          <span class="link-item-preview" aria-hidden="true">
+            <span class="preview-card preview-card-one" style="--preview-image: url('reference/media/aws_agentcore_3.jpeg');"></span>
+            <span class="preview-card preview-card-two" style="--preview-image: url('reference/media/aws_agentcore_2.jpeg');"></span>
+            <span class="preview-card preview-card-three" style="--preview-image: url('reference/media/aws_agentcore_1jpeg.jpeg');"></span>
+          </span>
+        </a>
+        <a class="link-item" href="activities/ac-ventures-capital-networking.html">
+          <span class="link-item-title">AC Ventures Capital</span>
+          <span class="link-item-desc">Networking Event</span>
+          <span class="link-item-preview" aria-hidden="true">
+            <span class="preview-card preview-card-one" style="--preview-image: url('reference/media/google_acventures_3.jpeg');"></span>
+            <span class="preview-card preview-card-two" style="--preview-image: url('reference/media/google_acventures_2.jpeg');"></span>
+            <span class="preview-card preview-card-three" style="--preview-image: url('reference/media/google_acventures_1.jpeg');"></span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- More -->
+    <section style="padding-bottom: 1px;">
+      <span class="section-title">More</span>
+      <p class="more-text">Reach me at <a href="mailto:azkaradinka@gmail.com">azkaradinka@gmail.com</a>.</p>
+    </section>
+  </div>
+</body>
+</html>
