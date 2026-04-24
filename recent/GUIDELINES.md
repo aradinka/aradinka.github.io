@@ -224,9 +224,9 @@ Articles use a single light theme powered by CSS variables:
 2. Update `<title>`, `<meta description>`, heading, and subtitle
 3. Write content using the elements documented above
 4. Update previous/next navigation links in the footer
-5. Add a link in `index.html` under the Activities section:
+5. Add a link in `index.html` under the `Recent` section:
    ```html
-   <a class="link-item" href="activities/your-slug.html">
+   <a class="link-item" href="recent/your-slug.html">
       <span class="link-item-title">Article Title</span>
       <span class="link-item-desc">Intriguing subtitle as a hook.</span>
    </a>
