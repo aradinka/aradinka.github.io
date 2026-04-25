@@ -283,6 +283,10 @@
       transform: translate3d(12px, 20px, 0) rotate(-3deg) scale(0.94);
     }
 
+    .link-item.single-preview .preview-card-one {
+      transform: translate3d(10px, 14px, 0) rotate(0deg) scale(0.96);
+    }
+
     .link-item:hover .preview-card,
     .link-item:focus-visible .preview-card,
     .link-item.is-preview-active .preview-card {
@@ -293,6 +297,12 @@
     .link-item:focus-visible .preview-card-one,
     .link-item.is-preview-active .preview-card-one {
       transform: translate3d(0, 0, 0) rotate(-8deg) scale(1);
+    }
+
+    .link-item.single-preview:hover .preview-card-one,
+    .link-item.single-preview:focus-visible .preview-card-one,
+    .link-item.single-preview.is-preview-active .preview-card-one {
+      transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
     }
 
     .link-item:hover .preview-card-two,
@@ -389,6 +399,10 @@
         transform: translate3d(12px, 20px, 0) rotate(-3deg) scale(0.94);
       }
 
+      .link-item.single-preview .preview-card-one {
+        transform: translate3d(10px, 14px, 0) rotate(0deg) scale(0.96);
+      }
+
       .link-item:hover .preview-card,
       .link-item:focus-visible .preview-card {
         opacity: 1;
@@ -397,6 +411,11 @@
       .link-item:hover .preview-card-one,
       .link-item:focus-visible .preview-card-one {
         transform: translate3d(0, 0, 0) rotate(-8deg) scale(1);
+      }
+
+      .link-item.single-preview:hover .preview-card-one,
+      .link-item.single-preview:focus-visible .preview-card-one {
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
       }
 
       .link-item:hover .preview-card-two,
@@ -449,6 +468,13 @@
     <section>
       <span class="section-title">Recent</span>
       <div class="link-list">
+        <a class="link-item single-preview" href="recent/back-to-one-screen.html">
+          <span class="link-item-title">Back to One Screen</span>
+          <span class="link-item-desc">Focus over screen space.</span>
+          <span class="link-item-preview" aria-hidden="true">
+            <span class="preview-card preview-card-one" style="--preview-image: url('reference/media/work_setup.jpg');"></span>
+          </span>
+        </a>
         <a class="link-item" href="recent/farmcloud-ai-aws-summit.html">
           <span class="link-item-title">FarmCloud AI</span>
           <span class="link-item-desc">Our showcase on AWS Summit</span>
