@@ -10,25 +10,8 @@ export default {
 
     const path = url.pathname;
 
-    // Shared assets stay at origin root
-    if (path.startsWith("/assets/") || path.startsWith("/reference/")) {
-      url.hostname = "aradinka.dev";
-      return fetch(new Request(url, request));
-    }
-
-    // Recent articles: shared vs per-track dummy
-    if (path.startsWith("/recent/")) {
-      url.hostname = "aradinka.dev";
-      // dummy-post is per-track isolated, needs prefix
-      if (path === "/recent/dummy-post.html") {
-        url.pathname = prefix + path;
-      }
-      // all other /recent/* are shared, no prefix
-      return fetch(new Request(url, request));
-    }
-
-    // Track home and any other track path: add prefix
-    // "/" on subdomain -> "/ai/", "/data/", "/eng/"
+    // Fully isolated: every path on subdomain maps to /{track} prefix
+    // Includes assets, reference, recent — each track has its own copy
     url.hostname = "aradinka.dev";
     url.pathname = prefix + (path === "/" ? "/" : path);
     const newReq = new Request(url, request);

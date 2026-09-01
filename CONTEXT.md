@@ -25,11 +25,11 @@ The home page for a track. Served at the subdomain root via Worker and at `/ai/`
 _Avoid_: landing, index, hub
 
 **Recent Article**:
-A detail page for a project or note. Shared articles live in `/recent/` and are linked from all tracks. Each track also has one isolated `dummy-post.html` at `/{track}/recent/dummy-post.html`, reachable as `/recent/dummy-post.html` on that subdomain.
+A detail page for a project or note. Hub has its own `/recent/`. Each track has a fully isolated copy at `/{track}/recent/` including its own `dummy-post.html` and copies of hub articles. Host-root `/recent/dummy-post.html` on a subdomain is that track's isolated file.
 
 _Avoid_: blog post, post, article detail
 
 **Asset**:
-Static file under `/assets/` or `/reference/media/` used by all pages.
+Static file under `/{track}/assets/` or `/{track}/reference/media/` and under `/assets/` or `/reference/media/` for the hub. Each host has its own copy, no sharing.
 
 _Avoid_: resource, static
